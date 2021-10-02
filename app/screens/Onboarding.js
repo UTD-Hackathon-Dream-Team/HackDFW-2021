@@ -6,10 +6,44 @@ import {
   Text,
   Button,
   Radio,
+  Select,
+  CheckIcon,
+  VStack,
 } from "native-base";
 
+function ConfiguredPlan() {
+  let [plan, setPlan] = React.useState("");
+
+  return (
+    <NativeBaseProvider>
+      <Text> Choose Plan: </Text>
+      <VStack alignItems="center" space={4}>
+        <Select
+          selectedValue={plan}
+          minWidth="200"
+          placeholder="Choose Plan"
+          _selectedItem={{
+            bg: "teal.600",
+            endIcon: <CheckIcon size="5" />,
+          }}
+          mt={1}
+          onValueChange={(newPlan) => setPlan(newPlan)}
+        >
+          <Select.Item label="Diabetes" value="diabetes" />
+          <Select.Item label="Mental Health" value="mentalHealth" />
+          <Select.Item label="After Surgery" value="postOp" />
+        </Select>
+      </VStack>
+    </NativeBaseProvider>
+  );
+}
+
+function CustomPlan() {
+  return <Text> Custom Plan </Text>;
+}
+
 function Onboarding({ navigation }) {
-  const [plan, setPlan] = React.useState("configured");
+  const [planType, setPlanType] = React.useState("configured");
 
   return (
     <NativeBaseProvider>
@@ -27,9 +61,9 @@ function Onboarding({ navigation }) {
         {/* Adventure Plan */}
         <Text>Adventure Plan: </Text>
         <Radio.Group
-          value={plan}
-          onChange={(newPlan) => {
-            setPlan(newPlan);
+          value={planType}
+          onChange={(newPlanType) => {
+            setPlanType(newPlanType);
           }}
         >
           <Radio value="configured" my={1}>
@@ -40,11 +74,7 @@ function Onboarding({ navigation }) {
           </Radio>
         </Radio.Group>
 
-        {plan === "configured" ? (
-          <Text> Configured Plan </Text>
-        ) : (
-          <Text> Custom Plan </Text>
-        )}
+        {planType === "configured" ? ConfiguredPlan() : CustomPlan()}
         <Button onPress={() => navigation.navigate("Home")}> Done </Button>
       </Center>
     </NativeBaseProvider>
