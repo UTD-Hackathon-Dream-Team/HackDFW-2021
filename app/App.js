@@ -1,7 +1,8 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NativeBaseProvider } from "native-base";
 import Login from "./screens/Login";
 import Daily from "./screens/Daily";
 import Facts from "./screens/Facts";
@@ -24,17 +25,19 @@ function Home() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="LogIn" component={Login} />
-        <Stack.Screen name="Onboarding" component={Onboarding} />
-        <Tab.Screen name="Story" component={Story} />
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Story" component={Story} />
+          <Stack.Screen name="LogIn" component={Login} />
+          <Stack.Screen name="Onboarding" component={Onboarding} />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
