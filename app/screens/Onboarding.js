@@ -1,17 +1,13 @@
 import * as React from "react";
 import { View, Text, Button } from "react-native";
-import Onboarding from "./Onboarding";
 
-function Login({ navigation }) {
+function Onboarding({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Login Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Onboarding")}
-      />
+      <Button title="Done" onPress={() => navigation.navigate("Home")} />
     </View>
   );
 }
 
-export default Login;
+export default Onboarding;
