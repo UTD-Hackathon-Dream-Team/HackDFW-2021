@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 7177,
-  "expoServerNgrokUrl": "https://my-qv9.saloniss.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.my-qv9.saloniss.app.exp.direct",
-  "ngrokPid": 7907
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
 }
