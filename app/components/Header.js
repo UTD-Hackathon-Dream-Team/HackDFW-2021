@@ -17,7 +17,7 @@ function Header() {
           fontSize: 8,
         }}
       >
-        102
+        8
       </Badge>
       <FontAwesome
         mx={{
