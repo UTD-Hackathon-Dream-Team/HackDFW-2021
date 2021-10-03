@@ -20,8 +20,6 @@ LogBox.ignoreLogs(["Warning: ..."]);
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const headerOptions = {};
-
 function Home() {
   return (
     <Tab.Navigator labeled={false}>
