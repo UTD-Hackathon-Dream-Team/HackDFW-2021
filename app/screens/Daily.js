@@ -25,15 +25,9 @@ function Daily() {
       }}
     >
     <VStack space={3} alignItems="flex-start">
-    <Checkbox value="info" colorScheme="info">
-            Take morning medication
-          </Checkbox>
-          <Checkbox value="info" colorScheme="info">
-            Take evening medication
-          </Checkbox>
-          <Checkbox value="info" colorScheme="info">
-            Do stretching exercises
-          </Checkbox>
+      <Checkbox value="info" colorScheme="info">Take morning medication</Checkbox>
+      <Checkbox value="info" colorScheme="info">Take evening medication</Checkbox>
+      <Checkbox value="info" colorScheme="info">Do stretching exercises</Checkbox>
     </VStack>
     </Box>
       </View>
