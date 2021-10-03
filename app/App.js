@@ -63,14 +63,15 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="LogIn" component={Login} />
+          <Stack.Screen name="Onboarding" component={Onboarding} />
+          <Stack.Screen name="Story" component={Story} />
+
           <Stack.Screen
             name="Home"
             component={Home}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="LogIn" component={Login} />
-          <Stack.Screen name="Story" component={Story} />
-          <Stack.Screen name="Onboarding" component={Onboarding} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

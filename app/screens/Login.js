@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, Text, Button, Image } from "react-native";
 import Onboarding from "./Onboarding";
-import Swiper from 'react-native-swiper/src';
+import Swiper from "react-native-swiper/src";
 
 import book from "../assets/book.png";
 
@@ -37,7 +37,7 @@ function Login({ navigation }) {
         </Text>
         <Button
           title="Go to Details"
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("Onboarding")}
         />
       </View>
     </Swiper>
