@@ -19,6 +19,7 @@ const TextInputs = ({ navigation }) => {
         style={styles.input}
         onChangeText={onChangeP}
         value={password}
+        secureTextEntry={true}
         placeholder="Password"
       />
       <Button
@@ -43,7 +44,9 @@ const TextInputs = ({ navigation }) => {
         style={{ alignSelf: "center" }}
         colorScheme="light"
       >
-        <Text fontSize="lg" color="white">Begin Adventure</Text>
+        <Text fontSize="lg" color="white">
+          Begin Adventure
+        </Text>
       </Button>
     </SafeAreaView>
   );
