@@ -9,17 +9,28 @@ import {
   Select,
   CheckIcon,
   VStack,
+  FlatList,
 } from "native-base";
+import { getPlan } from "../util/firestore";
 
 function ConfiguredPlan() {
-  let [plan, setPlan] = React.useState("");
+  let [planName, setPlanName] = React.useState("");
+  let [plan, setPlan] = React.useState({});
+
+  async function getPlanDetails(planName) {
+    getPlan(planName).then((plan) => {
+      console.log(plan);
+      setPlanName(planName);
+      setPlan(plan);
+    });
+  }
 
   return (
     <NativeBaseProvider>
       <Text> Choose Plan: </Text>
       <VStack alignItems="center" space={4}>
         <Select
-          selectedValue={plan}
+          selectedValue={planName}
           minWidth="200"
           placeholder="Choose Plan"
           _selectedItem={{
@@ -27,19 +38,38 @@ function ConfiguredPlan() {
             endIcon: <CheckIcon size="5" />,
           }}
           mt={1}
-          onValueChange={(newPlan) => setPlan(newPlan)}
+          onValueChange={(newPlanName) => getPlanDetails(newPlanName)}
         >
           <Select.Item label="Diabetes" value="diabetes" />
           <Select.Item label="Mental Health" value="mentalHealth" />
           <Select.Item label="After Surgery" value="postOp" />
         </Select>
       </VStack>
+      {plan.name && (
+        <NativeBaseProvider>
+          <Text fontSize="lg"> Plan Details: </Text>
+          {!plan.isEndless && (
+            <Text> Treatment Length: {plan.treatmentLength} Days</Text>
+          )}
+          <Text> Number of Daily Activities: {plan.dailyActivities}</Text>
+          <Text fontSize="md"> Daily Activities: </Text>
+          {plan.activities.map((activity) => (
+            <Text>
+              {"\u2B24"} {activity}
+            </Text>
+          ))}
+        </NativeBaseProvider>
+      )}
     </NativeBaseProvider>
   );
 }
 
 function CustomPlan() {
-  return <Text> Custom Plan </Text>;
+  return (
+    <NativeBaseProvider>
+      <Text> Custom Plan </Text>
+    </NativeBaseProvider>
+  );
 }
 
 function Onboarding({ navigation }) {
