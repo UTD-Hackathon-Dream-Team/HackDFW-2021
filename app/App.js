@@ -20,14 +20,15 @@ LogBox.ignoreLogs(["Warning: ..."]);
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function Home() {
+function HomeStack() {
   return (
-    <Tab.Navigator labeled={false}>
+    <Tab.Navigator>
       <Tab.Screen
         name="Daily Tasks"
-        component={HomeDaily}
+        component={Daily}
         options={{
-          headerShown: false,
+          headerRight: (props) => <Header {...props} />,
+          headerLeft: () => <Text style={{ marginLeft: 8 }}>Level 2</Text>,
           tabBarIcon: () => (
             <FontAwesome5 name="calendar-check" size={24} color="black" />
           ),
@@ -62,17 +63,12 @@ function HomeDaily() {
     <Stack.Navigator>
       <Stack.Screen
         name="Daily Tasks"
-        component={Daily}
+        component={HomeStack}
         options={{
-          headerRight: (props) => <Header {...props} />,
-          headerLeft: () => <Text>Level 2</Text>,
+          headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="Story"
-        component={Story}
-        options={{ tabBarVisible: false }}
-      />
+      <Stack.Screen name="Story" component={Story} />
     </Stack.Navigator>
   );
 }
@@ -85,9 +81,11 @@ export default function App() {
           <Stack.Screen name="LogIn" component={Login} />
           <Stack.Screen name="Onboarding" component={Onboarding} />
           <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: false }}
+            name="Daily Tasks"
+            component={HomeDaily}
+            options={{
+              headerShown: false,
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
