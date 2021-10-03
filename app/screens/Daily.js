@@ -1,13 +1,30 @@
 import * as React from "react";
-import { View, Text, Image, Dimensions } from "react-native";
+import { View, Image, Dimensions } from "react-native";
 import {
   Box,
+  Text,
   NativeBaseProvider,
   Checkbox,
   Heading,
   VStack,
   Button,
 } from "native-base";
+
+var styles = {
+  bg: {
+    linearGradient: {
+      colors: ['#d9caa0', '#c3b590'],
+      start: [0, 0],
+      end: [1, 0],
+    },
+  },
+  box: {
+    fontSize: 'md',
+    fontWeight: 'medium',
+    color: 'black',
+    textAlign: 'center',
+  }
+}
 
 function Daily({ navigation }) {
   return (
@@ -16,25 +33,12 @@ function Daily({ navigation }) {
         <Heading textAlign="center" size="md" mt="3">
           Streak: 7 Days
         </Heading>
-        <Box
-          bg={{
-            linearGradient: {
-              colors: ["#d9caa0", "#c3b590"],
-              start: [0, 0],
-              end: [1, 0],
-            },
-          }}
+        <Box  bg={styles.bg} style={styles.box}
           m="2"
-          p="5"
+          p="7"
           rounded="xl"
-          _text={{
-            fontSize: "md",
-            fontWeight: "medium",
-            color: "black",
-            textAlign: "center",
-          }}
         >
-          <VStack space={3} alignItems="flex-start">
+          <VStack space={5} alignItems="flex-start">
             <Checkbox value="info" colorScheme="info">
               Take morning medication
             </Checkbox>
@@ -45,19 +49,26 @@ function Daily({ navigation }) {
               Do stretching exercises
             </Checkbox>
           </VStack>
-        </Box>
-        <Button
+          <Button mt="6"
           onPress={() => navigation.navigate("Story")}
           width={175}
           style={{ alignSelf: "center" }}
         >
           Submit Daily Tasks
         </Button>
-        <Text style={{ marginTop: 30, alignSelf: "center" }}>
-          You're currently on level 2. You're helping Ebony collect fruits for
-          her pie. Keep finishing your daily tasks to collect more fruit and
-          give them to her for gems!
-        </Text>
+        </Box>
+
+        <Box  bg={styles.bg} style={styles.box}
+          m="2"
+          p="7"
+          rounded="xl"
+        >
+          <Text fontSize="md">You're currently on level 2!</Text>
+          <Text fontSize="md">Help Ebony collect fruits for
+          her pie! Keep finishing your daily tasks to collect more fruit and
+          give them to her for gems!</Text>
+          
+        </Box>
         <Image
           style={{
             height: 250,
