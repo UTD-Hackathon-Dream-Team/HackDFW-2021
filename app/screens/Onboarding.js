@@ -49,9 +49,9 @@ function ConfiguredPlan() {
           mt={1}
           onValueChange={(newPlanName) => getPlanDetails(newPlanName)}
         >
-          <Select.Item label="Diabetes" value="diabetes" />
-          {/* <Select.Item label="Mental Health" value="mentalHealth" /> */}
-          <Select.Item label="After Surgery" value="postOp" />
+          {plans.map((plan) => (
+            <Select.Item label={plan} value={plan} key={plan} />
+          ))}
         </Select>
       </VStack>
       {plan.name && (
