@@ -32,6 +32,12 @@ const styles = {
     alignSelf: "center",
     bottom: Dimensions.get("screen").height / 7,
   },
+  gems: {
+    marginTop: 50,
+    height: 250,
+    width: 350,
+    alignSelf: "center",
+  },
 };
 
 function Story({ navigation }) {
@@ -39,13 +45,13 @@ function Story({ navigation }) {
   const messages = [
     { text: "hello" },
     { text: "sir how r u doing dis is longer" },
+    { text: "Choose which gem you'd like!" },
   ];
 
   const proceedIndex = () =>
     setIndex((prevState) => {
       if (prevState == messages.length - 1) {
         navigation.navigate("Home");
-        return 0;
       } else {
         return prevState + 1;
       }
@@ -64,6 +70,9 @@ function Story({ navigation }) {
           </Text>
         </Container>
       </TouchableOpacity>
+      {messages[index] && messages[index].text.includes("gem") && (
+        <Image style={styles.gems} source={require("../assets/gems.png")} />
+      )}
       <Image style={styles.avatar} source={require("../assets/bunny.png")} />
     </ImageBackground>
   );
