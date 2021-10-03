@@ -7,7 +7,6 @@ export const getPlan = async (planName) => {
   const response = await planData.get();
 
   if (!response.exists) console.log("No such document!");
-  // console.log("Inside firestore.js: ", response.data());
   return response.data();
 };
 
@@ -20,7 +19,5 @@ export const getPlans = async () => {
   response.forEach((plan) => {
     plans.push(plan.id);
   });
-  console.log(plans);
-  // console.log("Inside firestore.js: ", response.data());
   return plans;
 };

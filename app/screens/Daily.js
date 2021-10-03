@@ -9,6 +9,7 @@ import {
   VStack,
   Button,
 } from "native-base";
+import { getPlan } from "../util/firestore";
 
 var styles = {
   bg: {
@@ -27,6 +28,16 @@ var styles = {
 }
 
 function Daily({ navigation }) {
+  let [plan, setPlan] = React.useState({});
+
+  React.useEffect(() => {
+    async function fetchData() {
+      let response = await getPlan("Diabetes");
+      setPlan(response);
+    }
+    fetchData();
+  }, []);
+
   return (
     <NativeBaseProvider config={config}>
       <View>
@@ -38,23 +49,24 @@ function Daily({ navigation }) {
           p="7"
           rounded="xl"
         >
-          <VStack space={5} alignItems="flex-start">
-            <Checkbox value="info" colorScheme="info">
-              Take morning medication
-            </Checkbox>
-            <Checkbox value="info" colorScheme="info">
-              Take evening medication
-            </Checkbox>
-            <Checkbox value="info" colorScheme="info">
-              Do stretching exercises
-            </Checkbox>
-          </VStack>
-          <Button mt="6"
+          {plan.activities && (
+            <VStack space={5} alignItems="flex-start">
+              {plan.activities.map((activity) => (
+                <Checkbox key={activity} value="info" colorScheme="info">
+                  {activity}
+                </Checkbox>
+              ))}
+            </VStack>
+          )}
+        <Button
           onPress={() => navigation.navigate("Story")}
-          width={175}
+          mt="6"
+          width={190}
+          size="sm"
           style={{ alignSelf: "center" }}
+          colorScheme="light"
         >
-          Submit Daily Tasks
+          <Text fontSize="lg" color="white">Submit Daily Tasks</Text>
         </Button>
         </Box>
 
