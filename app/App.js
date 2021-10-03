@@ -10,23 +10,52 @@ import Photo from "./screens/Photo";
 import Onboarding from "./screens/Onboarding";
 import Story from "./screens/Story";
 import Header from "./components/Header";
-import { LogBox } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
+import { LogBox, Text } from "react-native";
 
 LogBox.ignoreLogs(["Warning: ..."]);
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+const headerOptions = {};
+
 function Home() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator labeled={false}>
       <Tab.Screen
         name="Daily"
         component={Daily}
-        options={{ headerRight: (props) => <Header {...props} /> }}
+        options={{
+          headerRight: (props) => <Header {...props} />,
+          headerLeft: (props) => <Text style={{ marginLeft: 8 }}>Level 2</Text>,
+          tabBarIcon: () => (
+            <FontAwesome5 name="calendar-check" size={24} color="black" />
+          ),
+        }}
       />
-      <Tab.Screen name="Photo" component={Photo} />
-      <Tab.Screen name="Facts" component={Facts} />
+      <Tab.Screen
+        name="Album"
+        component={Photo}
+        options={{
+          headerRight: (props) => <Header {...props} />,
+          headerLeft: (props) => <Text style={{ marginLeft: 8 }}>Level 2</Text>,
+          tabBarIcon: () => (
+            <Fontisto name="photograph" size={24} color="black" />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Facts"
+        component={Facts}
+        options={{
+          headerRight: (props) => <Header {...props} />,
+          headerLeft: (props) => <Text style={{ marginLeft: 8 }}>Level 2</Text>,
+          tabBarIcon: () => <FontAwesome name="book" size={24} color="black" />,
+        }}
+      />
     </Tab.Navigator>
   );
 }
