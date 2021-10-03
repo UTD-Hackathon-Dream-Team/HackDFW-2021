@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
     height: Dimensions.get("screen").width / 2,
     margin: 10,
   },
+  gemsImage: {
+    alignSelf: "center",
+    width: 300,
+    height: 200,
+  },
 });
 
 function Photo() {
@@ -49,6 +54,9 @@ function Photo() {
           />
         </HStack>
       </VStack>
+      <Heading style={{ alignSelf: "center" }}>Gem Collection</Heading>
+      <Image source={require("../assets/gems.png")} style={styles.gemsImage} />
+      <Text style={{ alignSelf: "center" }}>5 more to the next level!</Text>
       <Heading style={{ alignSelf: "center" }}>Adventurer Journal</Heading>
     </ScrollView>
   );
