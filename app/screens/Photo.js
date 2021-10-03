@@ -1,7 +1,16 @@
 import * as React from "react";
 import { Image, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
 import * as WebBrowser from "expo-web-browser";
-import { Box, Text, Heading, VStack, HStack, ScrollView, NativeBaseProvider } from "native-base";
+import {
+  Box,
+  Text,
+  Heading,
+  VStack,
+  HStack,
+  Button,
+  ScrollView,
+  NativeBaseProvider,
+} from "native-base";
 
 const styles = StyleSheet.create({
   arImage: {
@@ -14,21 +23,27 @@ const styles = StyleSheet.create({
     width: 300,
     height: 200,
   },
+  bryant: {
+    alignSelf: "center",
+    width: 300,
+    height: 250,
+    marginBottom: 20,
+  },
 });
 var styles1 = {
   bg: {
     linearGradient: {
-      colors: ['#f3f0e8','#cfc3a6'],
-      start: [.5, .5],
+      colors: ["#f3f0e8", "#cfc3a6"],
+      start: [0.5, 0.5],
       end: [1, 1],
     },
-  }
-}
+  },
+};
 
 function Photo() {
   return (
-    <Box bg={styles1.bg} style={{flex:1}}> 
-      <ScrollView mx="2"    >
+    <Box bg={styles1.bg} style={{ flex: 1 }}>
+      <ScrollView mx="2">
         <Heading textAlign="center" mt="3" size="lg">
           Adventurer Buddies
         </Heading>
@@ -53,43 +68,67 @@ function Photo() {
                 )
               }
             >
-            <Image
-              source={require("../assets/owl.jpg")}
-              style={styles.arImage}
-            />
+              <Image
+                source={require("../assets/owl.jpg")}
+                style={styles.arImage}
+              />
             </TouchableOpacity>
           </HStack>
           <HStack>
-          <TouchableOpacity
+            <TouchableOpacity
               onPress={() =>
                 WebBrowser.openBrowserAsync(
                   "https://api.echo3d.co/webar?key=quiet-pond-7565&entry=872571e6-658b-4f53-8abb-127a2bd45c4f"
                 )
               }
             >
-            <Image
-              source={require("../TestImages/Honey.png")} // real one 
-              style={styles.arImage}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
+              <Image
+                source={require("../TestImages/Honey.png")} // real one
+                style={styles.arImage}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={() =>
                 WebBrowser.openBrowserAsync(
                   "https://api.echo3d.co/webar?key=quiet-pond-7565&entry=8bb07daf-e06f-4b68-9984-18c45e5089a4"
                 )
               }
             >
-            <Image
-              source={require("../assets/parrot.jpg")}
-              style={styles.arImage}
-            />
-          </TouchableOpacity>
+              <Image
+                source={require("../assets/parrot.jpg")}
+                style={styles.arImage}
+              />
+            </TouchableOpacity>
           </HStack>
         </VStack>
-        <Heading mt="7" style={{ alignSelf: "center" }}>Gem Collection</Heading>
-        <Image source={require("../assets/gems.png")} style={styles.gemsImage} />
-        <Text mt="3" style={{ alignSelf: "center" }}>5 more gems until next level!</Text>
-        <Heading mt="7" style={{ alignSelf: "center" }}>Adventurer Journal</Heading>
+        <Heading mt="7" style={{ alignSelf: "center" }}>
+          Gem Collection
+        </Heading>
+        <Image
+          source={require("../assets/gems.png")}
+          style={styles.gemsImage}
+        />
+        <Text mt="3" style={{ alignSelf: "center" }}>
+          5 more gems until next level!
+        </Text>
+        <Heading mt="7" style={{ alignSelf: "center" }}>
+          Adventurer Journal
+        </Heading>
+        <Button
+          mb="3"
+          width={150}
+          size="sm"
+          style={{ alignSelf: "center" }}
+          colorScheme="light"
+        >
+          <Text fontSize="lg" color="white">
+            Upload Image
+          </Text>
+        </Button>
+        <Image
+          source={require("../assets/bryant.jpeg")}
+          style={styles.bryant}
+        />
       </ScrollView>
     </Box>
   );
@@ -104,7 +143,7 @@ const config = {
 export default () => {
   return (
     <NativeBaseProvider config={config}>
-        <Photo />
+      <Photo />
     </NativeBaseProvider>
   );
 };
