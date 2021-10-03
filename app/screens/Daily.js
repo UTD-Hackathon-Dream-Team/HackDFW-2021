@@ -60,14 +60,14 @@ function Daily({ navigation }) {
             <VStack space={5} alignItems="flex-start">
               {plan.activities.map((activity) => (
                 <Checkbox key={activity} value="info" colorScheme="info">
-                  {activity}
+                  <Text fontSize="lg" mx="3">{activity}</Text>
                 </Checkbox>
               ))}
             </VStack>
           )}
         <Button
           onPress={() => navigation.navigate("Story")}
-          mt="6"
+          mt="5"
           width={190}
           size="sm"
           style={{ alignSelf: "center" }}

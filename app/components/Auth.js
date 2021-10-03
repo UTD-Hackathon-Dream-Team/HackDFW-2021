@@ -43,7 +43,7 @@ const TextInputs = ({ navigation }) => {
         style={{ alignSelf: "center" }}
         colorScheme="light"
       >
-        Begin Adventure
+        <Text fontSize="lg" color="white">Begin Adventure</Text>
       </Button>
     </SafeAreaView>
   );

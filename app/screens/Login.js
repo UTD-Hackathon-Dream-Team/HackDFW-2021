@@ -6,6 +6,7 @@ import { Box, NativeBaseProvider, Text } from "native-base";
 import TextInputs from "../components/Auth";
 import book from "../assets/book.png";
 import apple from "../assets/apple.png";
+import profile from "../assets/profile.png";
 
 var styles = {
   slides: {
@@ -43,9 +44,9 @@ function Login({ navigation }) {
           </Text>
         </Box>
         <Box style={styles.slides}>
-          <Image source={apple} style={{ width: 120, height: 120 }}></Image>
+          <Image source={profile} style={{ width: 120, height: 120 }}></Image>
           <Text m="7" fontSize="3xl" style={styles.desc}>
-            Log In/Create Account
+            Log In / Create Account
           </Text>
           <TextInputs navigation={navigation} />
         </Box>
