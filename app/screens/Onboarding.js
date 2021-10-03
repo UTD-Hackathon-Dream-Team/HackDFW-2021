@@ -77,7 +77,7 @@ function Onboarding({ navigation }) {
 
   return (
     <NativeBaseProvider>
-      <Center flex={1} px="3">
+      <Center flex={1} px="3" paddingBottom="20">
         {/* Patient Name */}
         <Text>Adventurer Name</Text>
         <Input
