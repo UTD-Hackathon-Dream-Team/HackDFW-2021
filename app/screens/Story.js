@@ -35,7 +35,7 @@ const styles = {
 };
 
 function Story({ navigation }) {
-  const { index, setIndex } = useState(0);
+  const [index, setIndex] = useState(0);
   const messages = [
     { text: "hello" },
     { text: "sir how r u doing dis is longer" },
@@ -43,13 +43,12 @@ function Story({ navigation }) {
 
   const proceedIndex = () =>
     setIndex((prevState) => {
-      console.log(prevState);
       if (prevState == messages.length - 1) {
         navigation.navigate("Home");
+        return 0;
       } else {
         return prevState + 1;
       }
-      console.log(prevState + " " + messages);
     });
 
   return (
