@@ -69,7 +69,10 @@ function ConfiguredPlan() {
         <Box mx="4" mt="5">
           <Text fontSize="lg"> Plan Details: </Text>
           {!plan.isEndless && (
-            <Text> Treatment Length: {plan.treatmentLength} Days</Text>
+            <Text fontSize="lg" ml="3">
+              {" "}
+              Treatment Length: {plan.treatmentLength} Days
+            </Text>
           )}
           <Text fontSize="lg" ml="3">
             {" "}
