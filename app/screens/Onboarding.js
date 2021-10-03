@@ -21,7 +21,7 @@ function ConfiguredPlan() {
 
   React.useEffect(() => {
     getPlans().then((plans) => {
-      console.log(plans);
+      // console.log(plans);
       setPlans(plans);
     });
   }, []);
@@ -30,7 +30,7 @@ function ConfiguredPlan() {
     getPlan(planName).then((plan) => {
       setPlanName(planName);
       setPlan(plan);
-      console.log(plan);
+      // console.log(plan);
     });
   }
 
