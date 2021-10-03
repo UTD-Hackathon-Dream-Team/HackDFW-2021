@@ -15,6 +15,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { LogBox, Text } from "react-native";
 
+LogBox.ignoreAllLogs(true);
 LogBox.ignoreLogs(["Warning:"]);
 
 const Stack = createNativeStackNavigator();
