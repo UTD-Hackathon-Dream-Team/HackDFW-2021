@@ -10,6 +10,7 @@ var styles = {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#7A3D14"
   },
   desc: {
     textAlign: "center",

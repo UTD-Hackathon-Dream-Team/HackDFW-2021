@@ -1,4 +1,5 @@
 import * as React from "react";
+import { View } from "react-native";
 import {
   Input,
   Center,
@@ -11,27 +12,35 @@ import {
   VStack,
   FlatList,
 } from "native-base";
-import { getPlan } from "../util/firestore";
+import { getPlan, getPlans } from "../util/firestore";
 
 function ConfiguredPlan() {
+  let [plans, setPlans] = React.useState([]);
   let [planName, setPlanName] = React.useState("");
   let [plan, setPlan] = React.useState({});
 
+  React.useEffect(() => {
+    getPlans().then((plans) => {
+      // console.log(plans);
+      setPlans(plans);
+    });
+  }, []);
+
   async function getPlanDetails(planName) {
     getPlan(planName).then((plan) => {
-      console.log(plan);
       setPlanName(planName);
       setPlan(plan);
+      // console.log(plan);
     });
   }
 
   return (
-    <NativeBaseProvider>
+    <View>
       <Text> Choose Plan: </Text>
       <VStack alignItems="center" space={4}>
         <Select
           selectedValue={planName}
-          minWidth="200"
+          minWidth="300"
           placeholder="Choose Plan"
           _selectedItem={{
             bg: "teal.600",
@@ -40,13 +49,13 @@ function ConfiguredPlan() {
           mt={1}
           onValueChange={(newPlanName) => getPlanDetails(newPlanName)}
         >
-          <Select.Item label="Diabetes" value="diabetes" />
-          {/* <Select.Item label="Mental Health" value="mentalHealth" /> */}
-          <Select.Item label="After Surgery" value="postOp" />
+          {plans.map((plan) => (
+            <Select.Item label={plan} value={plan} key={plan} />
+          ))}
         </Select>
       </VStack>
       {plan.name && (
-        <NativeBaseProvider>
+        <View>
           <Text fontSize="lg"> Plan Details: </Text>
           {!plan.isEndless && (
             <Text> Treatment Length: {plan.treatmentLength} Days</Text>
@@ -54,21 +63,21 @@ function ConfiguredPlan() {
           <Text> Number of Daily Activities: {plan.dailyActivities}</Text>
           <Text fontSize="md"> Daily Activities: </Text>
           {plan.activities.map((activity) => (
-            <Text>
+            <Text key={activity}>
               {"\u2B24"} {activity}
             </Text>
           ))}
-        </NativeBaseProvider>
+        </View>
       )}
-    </NativeBaseProvider>
+    </View>
   );
 }
 
 function CustomPlan() {
   return (
-    <NativeBaseProvider>
+    <View>
       <Text> Custom Plan </Text>
-    </NativeBaseProvider>
+    </View>
   );
 }
 
@@ -76,21 +85,21 @@ function Onboarding({ navigation }) {
   const [planType, setPlanType] = React.useState("configured");
 
   return (
-    <NativeBaseProvider>
-      <Center flex={1} px="3" paddingBottom="20">
-        {/* Patient Name */}
-        <Text>Adventurer Name</Text>
-        <Input
-          size="md"
-          placeholder="Name"
-          w={{
-            base: "70%",
-            md: "20%",
-          }}
-        />
-        {/* Adventure Plan */}
-        <Text>Adventure Plan: </Text>
-        {/* <Radio.Group
+    <View style={{ margin: 50 }}>
+      {/* Patient Name */}
+      <Text>Adventurer Name:</Text>
+      <Input
+        minWidth="300"
+        size="md"
+        placeholder="Name"
+        w={{
+          base: "70%",
+          md: "20%",
+        }}
+      />
+      {/* Adventure Plan */}
+      {/* <Text>Adventure Plan: </Text> */}
+      {/* <Radio.Group
           value={planType}
           onChange={(newPlanType) => {
             setPlanType(newPlanType);
@@ -103,12 +112,17 @@ function Onboarding({ navigation }) {
             Custom Plan
           </Radio>
         </Radio.Group> */}
-        <ConfiguredPlan />
+      <ConfiguredPlan />
 
-        {/* {planType === "configured" ? ConfiguredPlan() : CustomPlan()} */}
-        <Button onPress={() => navigation.navigate("Home")}> Done </Button>
-      </Center>
-    </NativeBaseProvider>
+      {/* {planType === "configured" ? ConfiguredPlan() : CustomPlan()} */}
+      <Button
+        style={{ margin: 40 }}
+        onPress={() => navigation.navigate("Daily Tasks")}
+      >
+        {" "}
+        Done{" "}
+      </Button>
+    </View>
   );
 }
 

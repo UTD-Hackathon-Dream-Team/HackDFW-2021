@@ -51,7 +51,7 @@ function Story({ navigation }) {
   const proceedIndex = () =>
     setIndex((prevState) => {
       if (prevState == messages.length - 1) {
-        navigation.navigate("Home");
+        navigation.navigate("Daily Tasks");
       } else {
         return prevState + 1;
       }

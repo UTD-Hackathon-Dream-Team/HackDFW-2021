@@ -10,3 +10,17 @@ export const getPlan = async (planName) => {
   // console.log("Inside firestore.js: ", response.data());
   return response.data();
 };
+
+export const getPlans = async () => {
+  var planData = db.collection("plans");
+
+  const response = await planData.get();
+
+  var plans = [];
+  response.forEach((plan) => {
+    plans.push(plan.id);
+  });
+  console.log(plans);
+  // console.log("Inside firestore.js: ", response.data());
+  return plans;
+};
