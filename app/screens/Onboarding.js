@@ -8,19 +8,19 @@ import {
   Select,
   CheckIcon,
   VStack,
-  NativeBaseProvider, 
+  NativeBaseProvider,
 } from "native-base";
 import { getPlan, getPlans } from "../util/firestore";
 
 var styles = {
   bg: {
     linearGradient: {
-      colors: ['#f3f0e8','#cfc3a6'],
-      start: [.5, .5],
+      colors: ["#f3f0e8", "#cfc3a6"],
+      start: [0.5, 0.5],
       end: [1, 1],
     },
-  }
-}
+  },
+};
 
 function ConfiguredPlan() {
   let [plans, setPlans] = React.useState([]);
@@ -43,8 +43,10 @@ function ConfiguredPlan() {
   }
 
   return (
-    <Box> 
-      <Text fontSize="lg" mt="7"> Choose Plan: </Text>
+    <Box>
+      <Text fontSize="lg" mt="7">
+        Choose Plan:
+      </Text>
       <VStack alignItems="center" space={4}>
         <Select
           fontSize="lg"
@@ -69,8 +71,14 @@ function ConfiguredPlan() {
           {!plan.isEndless && (
             <Text> Treatment Length: {plan.treatmentLength} Days</Text>
           )}
-          <Text fontSize="lg" ml="3"> Number of Daily Activities: {plan.dailyActivities}</Text>
-          <Text fontSize="lg" mt="5"> Daily Activities: </Text>
+          <Text fontSize="lg" ml="3">
+            {" "}
+            Number of Daily Activities: {plan.dailyActivities}
+          </Text>
+          <Text fontSize="lg" mt="5">
+            {" "}
+            Daily Activities:{" "}
+          </Text>
           {plan.activities.map((activity) => (
             <Text fontSize="lg" ml="3" key={activity}>
               {"\u2B24"} {activity}
@@ -94,7 +102,7 @@ function Onboarding({ navigation }) {
   const [planType, setPlanType] = React.useState("configured");
 
   return (
-    <Box p="10" bg={styles.bg} style={{ flex:1 }}>
+    <Box p="10" bg={styles.bg} style={{ flex: 1 }}>
       {/* Patient Name */}
       <Text fontSize="lg">Adventurer Name:</Text>
       <Input
@@ -115,7 +123,9 @@ function Onboarding({ navigation }) {
         style={{ alignSelf: "center" }}
         onPress={() => navigation.navigate("Daily Tasks")}
       >
-        <Text fontSize="lg" color="white">Done</Text>
+        <Text fontSize="lg" color="white">
+          Done
+        </Text>
       </Button>
     </Box>
   );
@@ -127,11 +137,10 @@ const config = {
   },
 };
 
-export default ( {navigation} ) => {
+export default ({ navigation }) => {
   return (
     <NativeBaseProvider config={config}>
-        <Onboarding navigation={navigation} />
+      <Onboarding navigation={navigation} />
     </NativeBaseProvider>
   );
 };
-
