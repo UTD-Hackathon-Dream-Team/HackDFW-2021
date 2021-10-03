@@ -40,7 +40,7 @@ function ConfiguredPlan() {
       <VStack alignItems="center" space={4}>
         <Select
           selectedValue={planName}
-          minWidth="200"
+          minWidth="300"
           placeholder="Choose Plan"
           _selectedItem={{
             bg: "teal.600",
@@ -87,8 +87,9 @@ function Onboarding({ navigation }) {
   return (
     <View style={{ margin: 50 }}>
       {/* Patient Name */}
-      <Text>Adventurer Name</Text>
+      <Text>Adventurer Name:</Text>
       <Input
+        minWidth="300"
         size="md"
         placeholder="Name"
         w={{
