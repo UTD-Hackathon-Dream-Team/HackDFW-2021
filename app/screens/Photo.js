@@ -34,24 +34,48 @@ function Photo() {
             }
           >
             <Image
-              source={require("../TestImages/Honey.png")}
+              source={require("../assets/fox.jpg")}
               style={styles.arImage}
             />
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              WebBrowser.openBrowserAsync(
+                "https://api.echo3d.co/webar?key=quiet-pond-7565&entry=fbd05692-d034-4cd7-8198-4f50d36bb8b5"
+              )
+            }
+          >
           <Image
-            source={require("../TestImages/Honey.png")}
+            source={require("../assets/owl.jpg")}
             style={styles.arImage}
           />
+          </TouchableOpacity>
         </HStack>
         <HStack>
+        <TouchableOpacity
+            onPress={() =>
+              WebBrowser.openBrowserAsync(
+                "https://api.echo3d.co/webar?key=quiet-pond-7565&entry=872571e6-658b-4f53-8abb-127a2bd45c4f"
+              )
+            }
+          >
           <Image
-            source={require("../TestImages/Honey.png")}
+            source={require("../TestImages/Honey.png")} // real one 
             style={styles.arImage}
           />
+        </TouchableOpacity>
+        <TouchableOpacity
+            onPress={() =>
+              WebBrowser.openBrowserAsync(
+                "https://api.echo3d.co/webar?key=quiet-pond-7565&entry=8bb07daf-e06f-4b68-9984-18c45e5089a4"
+              )
+            }
+          >
           <Image
-            source={require("../TestImages/Honey.png")}
+            source={require("../assets/parrot.jpg")}
             style={styles.arImage}
           />
+        </TouchableOpacity>
         </HStack>
       </VStack>
       <Heading style={{ alignSelf: "center" }}>Gem Collection</Heading>
