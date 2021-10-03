@@ -10,7 +10,6 @@ var styles = {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#7a3d14",
   },
   desc: {
     textAlign: "center",
@@ -22,25 +21,24 @@ var styles = {
     width: 350,
     height: 400,
   },
-}
+};
 
 function Login({ navigation }) {
   return (
     <Swiper showsButtons loop={false}>
       <View style={styles.slides}>
-      <Image source={book} style={styles.icon}></Image>
-        <Text style={styles.desc}>
-          Welcome to Health Quest!
-        </Text>
+        <Image source={book} style={styles.icon}></Image>
+        <Text style={styles.desc}>Welcome to Health Quest!</Text>
       </View>
       <View style={styles.slides}>
-      <Image source={book} style={styles.icon}></Image>
+        <Image source={book} style={styles.icon}></Image>
         <Text style={styles.desc}>
           Track daily tasks and learn fun facts on your quest to stay healthy!
-          </Text>
-          <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Home')}/>
+        </Text>
+        <Button
+          title="Go to Details"
+          onPress={() => navigation.navigate("Home")}
+        />
       </View>
     </Swiper>
   );
