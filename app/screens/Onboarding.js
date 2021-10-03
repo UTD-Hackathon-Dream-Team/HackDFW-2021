@@ -41,7 +41,7 @@ function ConfiguredPlan() {
           onValueChange={(newPlanName) => getPlanDetails(newPlanName)}
         >
           <Select.Item label="Diabetes" value="diabetes" />
-          <Select.Item label="Mental Health" value="mentalHealth" />
+          {/* <Select.Item label="Mental Health" value="mentalHealth" /> */}
           <Select.Item label="After Surgery" value="postOp" />
         </Select>
       </VStack>
@@ -90,7 +90,7 @@ function Onboarding({ navigation }) {
         />
         {/* Adventure Plan */}
         <Text>Adventure Plan: </Text>
-        <Radio.Group
+        {/* <Radio.Group
           value={planType}
           onChange={(newPlanType) => {
             setPlanType(newPlanType);
@@ -102,9 +102,10 @@ function Onboarding({ navigation }) {
           <Radio value="custom" my={1}>
             Custom Plan
           </Radio>
-        </Radio.Group>
+        </Radio.Group> */}
+        <ConfiguredPlan />
 
-        {planType === "configured" ? ConfiguredPlan() : CustomPlan()}
+        {/* {planType === "configured" ? ConfiguredPlan() : CustomPlan()} */}
         <Button onPress={() => navigation.navigate("Home")}> Done </Button>
       </Center>
     </NativeBaseProvider>
