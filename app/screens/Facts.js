@@ -1,18 +1,24 @@
 import * as React from "react";
-import { View, Text } from "react-native";
-import { Box, Center, Heading, NativeBaseProvider, VStack } from "native-base";
+import { View } from "react-native";
+import { Box,  Text, Center, Heading, NativeBaseProvider, VStack } from "native-base";
 import { getPlan } from "../util/firestore";
 
 var styles = {
-  bg: {
+  cardbg: {
     linearGradient: {
-      colors: ["#d9caa0", "#c3b590"],
+      colors: ['#d9caa0', '#c3b590'],
       start: [0, 0],
       end: [1, 0],
     },
   },
+  bg: {
+    linearGradient: {
+      colors: ['#f3f0e8','#cfc3a6'],
+      start: [.5, .5],
+      end: [1, 1],
+    },
+  },
   box: {
-    fontSize: "md",
     fontWeight: "medium",
     color: "black",
     textAlign: "center",
@@ -31,28 +37,28 @@ function Facts() {
   }, []);
 
   return (
-    <View>
-      <Heading textAlign="center" size="lg">
+    <Box bg={styles.bg} style={{flex:1}}> 
+      <Heading textAlign="center" mt="3" size="lg">
         Adventurer Wisdom
       </Heading>
       {plan.facts && (
-        <VStack space={3} alignItems="flex-start">
+        <VStack mt="5" alignSelf="center" space={2} alignItems="flex-start">
           {plan.facts.map((fact) => (
             <Box
               key={fact}
-              bg={styles.bg}
+              bg={styles.cardbg}
               style={styles.box}
               p="7"
               m="1"
               rounded="xl"
               width="300"
             >
-              {fact}
+              <Text fontSize="lg">{fact}</Text>
             </Box>
           ))}
         </VStack>
       )}
-    </View>
+    </Box>
   );
 }
 
@@ -65,9 +71,7 @@ const config = {
 export default () => {
   return (
     <NativeBaseProvider config={config}>
-      <Center flex={1} px="3">
         <Facts />
-      </Center>
     </NativeBaseProvider>
   );
 };

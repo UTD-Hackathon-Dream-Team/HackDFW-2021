@@ -12,11 +12,18 @@ import {
 import { getPlan } from "../util/firestore";
 
 var styles = {
-  bg: {
+  cardbg: {
     linearGradient: {
       colors: ['#d9caa0', '#c3b590'],
       start: [0, 0],
       end: [1, 0],
+    },
+  },
+  bg: {
+    linearGradient: {
+      colors: ['#f3f0e8','#cfc3a6'],
+      start: [.5, .5],
+      end: [1, 1],
     },
   },
   box: {
@@ -40,11 +47,11 @@ function Daily({ navigation }) {
 
   return (
     <NativeBaseProvider config={config}>
-      <View>
-        <Heading textAlign="center" size="md" mt="3">
-          Streak: 7 Days
-        </Heading>
-        <Box  bg={styles.bg} style={styles.box}
+      <Box bg={styles.bg} style={{flex:1}}> 
+      <Heading textAlign="center" mt="3" size="lg">
+        Streak: 7 Days
+      </Heading>
+        <Box  bg={styles.cardbg} style={styles.box}
           m="2"
           p="7"
           rounded="xl"
@@ -70,7 +77,7 @@ function Daily({ navigation }) {
         </Button>
         </Box>
 
-        <Box  bg={styles.bg} style={styles.box}
+        <Box  bg={styles.cardbg} style={styles.box}
           m="2"
           p="7"
           rounded="xl"
@@ -91,7 +98,7 @@ function Daily({ navigation }) {
           }}
           source={require("../assets/bunny.png")}
         />
-      </View>
+      </Box>
     </NativeBaseProvider>
   );
 }

@@ -1,47 +1,61 @@
 import * as React from "react";
-import { View, Text, Button, Image } from "react-native";
+import { Image } from "react-native";
 import Onboarding from "./Onboarding";
 import Swiper from "react-native-swiper/src";
+import {
+  Box,  NativeBaseProvider, Center, Text, Button
+} from "native-base";
 
 import book from "../assets/book.png";
+import apple from "../assets/apple.png";
 
 var styles = {
   slides: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#7A3D14"
+    backgroundColor: "#f3f0e8"
   },
   desc: {
     textAlign: "center",
-    color: "white",
-    fontSize: 30,
     fontWeight: "bold",
   },
-  icon: {
-    width: 350,
-    height: 400,
+  bg: {
+    linearGradient: {
+      colors: ['#f3f0e8','#cfc3a6'],
+      start: [.5, .5],
+      end: [1, 1],
+    },
   },
 };
 
 function Login({ navigation }) {
   return (
-    <Swiper showsButtons loop={false}>
-      <View style={styles.slides}>
-        <Image source={book} style={styles.icon}></Image>
-        <Text style={styles.desc}>Welcome to Health Quest!</Text>
-      </View>
-      <View style={styles.slides}>
-        <Image source={book} style={styles.icon}></Image>
-        <Text style={styles.desc}>
-          Track daily tasks and learn fun facts on your quest to stay healthy!
-        </Text>
-        <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate("Onboarding")}
-        />
-      </View>
-    </Swiper>
+    <Box style={{flex:1}}> 
+      <Swiper showsButtons loop={false}>
+        <Box style={styles.slides}>
+            <Image source={book} style={{width: 180, height: 200}}></Image>
+            <Text m="7" fontSize="4xl" style={styles.desc}>Welcome to Health Quest!</Text>
+          </Box>
+          <Box style={styles.slides}>
+            <Image source={apple} style={{width: 120, height: 120}}></Image>
+            <Text m="7" fontSize="3xl" style={styles.desc}>
+              Track daily tasks and learn fun facts on your quest to stay healthy!
+            </Text>
+          <Button
+            onPress={() => navigation.navigate("Onboarding")}
+            mt="6"
+            width={190}
+            size="sm"
+            style={{ alignSelf: "center" }}
+            colorScheme="light"
+          >
+            <Text fontSize="lg" color="white">Begin Adventure</Text>
+          </Button>
+
+        </Box>
+      </Swiper>
+    </Box>
   );
 }
 

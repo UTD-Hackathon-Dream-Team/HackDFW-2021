@@ -1,18 +1,26 @@
 import * as React from "react";
 import { View } from "react-native";
 import {
+  Box,
   Input,
-  Center,
-  NativeBaseProvider,
   Text,
   Button,
-  Radio,
   Select,
   CheckIcon,
   VStack,
-  FlatList,
+  NativeBaseProvider, 
 } from "native-base";
 import { getPlan, getPlans } from "../util/firestore";
+
+var styles = {
+  bg: {
+    linearGradient: {
+      colors: ['#f3f0e8','#cfc3a6'],
+      start: [.5, .5],
+      end: [1, 1],
+    },
+  }
+}
 
 function ConfiguredPlan() {
   let [plans, setPlans] = React.useState([]);
@@ -35,10 +43,11 @@ function ConfiguredPlan() {
   }
 
   return (
-    <View>
-      <Text> Choose Plan: </Text>
+    <Box> 
+      <Text fontSize="lg" mt="7"> Choose Plan: </Text>
       <VStack alignItems="center" space={4}>
         <Select
+          fontSize="lg"
           selectedValue={planName}
           minWidth="300"
           placeholder="Choose Plan"
@@ -69,7 +78,7 @@ function ConfiguredPlan() {
           ))}
         </View>
       )}
-    </View>
+    </Box>
   );
 }
 
@@ -85,45 +94,44 @@ function Onboarding({ navigation }) {
   const [planType, setPlanType] = React.useState("configured");
 
   return (
-    <View style={{ margin: 50 }}>
+    <Box p="10" bg={styles.bg} style={{ flex:1 }}>
       {/* Patient Name */}
-      <Text>Adventurer Name:</Text>
+      <Text fontSize="lg">Adventurer Name:</Text>
       <Input
         minWidth="300"
-        size="md"
+        size="lg"
         placeholder="Name"
         w={{
           base: "70%",
           md: "20%",
         }}
       />
-      {/* Adventure Plan */}
-      {/* <Text>Adventure Plan: </Text> */}
-      {/* <Radio.Group
-          value={planType}
-          onChange={(newPlanType) => {
-            setPlanType(newPlanType);
-          }}
-        >
-          <Radio value="configured" my={1}>
-            Pre-Configured Plan
-          </Radio>
-          <Radio value="custom" my={1}>
-            Custom Plan
-          </Radio>
-        </Radio.Group> */}
       <ConfiguredPlan />
-
-      {/* {planType === "configured" ? ConfiguredPlan() : CustomPlan()} */}
       <Button
-        style={{ margin: 40 }}
+        colorScheme="light"
+        width={150}
+        size="sm"
+        mt="10"
+        style={{ alignSelf: "center" }}
         onPress={() => navigation.navigate("Daily Tasks")}
       >
-        {" "}
-        Done{" "}
+        <Text fontSize="lg" color="white">Done</Text>
       </Button>
-    </View>
+    </Box>
   );
 }
 
-export default Onboarding;
+const config = {
+  dependencies: {
+    "linear-gradient": require("expo-linear-gradient").LinearGradient,
+  },
+};
+
+export default ( {navigation} ) => {
+  return (
+    <NativeBaseProvider config={config}>
+        <Onboarding navigation={navigation} />
+    </NativeBaseProvider>
+  );
+};
+
