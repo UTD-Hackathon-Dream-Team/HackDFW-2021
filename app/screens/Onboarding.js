@@ -117,7 +117,7 @@ function Onboarding({ navigation }) {
       {/* {planType === "configured" ? ConfiguredPlan() : CustomPlan()} */}
       <Button
         style={{ margin: 40 }}
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("Daily Tasks")}
       >
         {" "}
         Done{" "}
