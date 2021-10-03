@@ -24,11 +24,10 @@ function Home() {
   return (
     <Tab.Navigator labeled={false}>
       <Tab.Screen
-        name="Daily"
-        component={Daily}
+        name="Daily Tasks"
+        component={HomeDaily}
         options={{
-          headerRight: (props) => <Header {...props} />,
-          headerLeft: (props) => <Text style={{ marginLeft: 8 }}>Level 2</Text>,
+          headerShown: false,
           tabBarIcon: () => (
             <FontAwesome5 name="calendar-check" size={24} color="black" />
           ),
@@ -58,6 +57,26 @@ function Home() {
   );
 }
 
+function HomeDaily() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Daily Tasks"
+        component={Daily}
+        options={{
+          headerRight: (props) => <Header {...props} />,
+          headerLeft: () => <Text>Level 2</Text>,
+        }}
+      />
+      <Stack.Screen
+        name="Story"
+        component={Story}
+        options={{ tabBarVisible: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <NativeBaseProvider>
@@ -65,8 +84,6 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name="LogIn" component={Login} />
           <Stack.Screen name="Onboarding" component={Onboarding} />
-          <Stack.Screen name="Story" component={Story} />
-
           <Stack.Screen
             name="Home"
             component={Home}

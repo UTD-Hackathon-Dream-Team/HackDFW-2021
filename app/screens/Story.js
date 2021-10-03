@@ -30,7 +30,7 @@ const styles = {
     position: "absolute",
     margin: 16,
     alignSelf: "center",
-    bottom: Dimensions.get("screen").height / 7,
+    bottom: Dimensions.get("screen").height / 5,
   },
   gems: {
     marginTop: 50,
