@@ -59,24 +59,24 @@ function ConfiguredPlan() {
           onValueChange={(newPlanName) => getPlanDetails(newPlanName)}
         >
           {plans.map((plan) => (
-            <Select.Item label={plan} value={plan} key={plan} />
+            <Select.Item size="lg" label={plan} value={plan} key={plan} />
           ))}
         </Select>
       </VStack>
       {plan.name && (
-        <View>
+        <Box mx="4" mt="5">
           <Text fontSize="lg"> Plan Details: </Text>
           {!plan.isEndless && (
             <Text> Treatment Length: {plan.treatmentLength} Days</Text>
           )}
-          <Text> Number of Daily Activities: {plan.dailyActivities}</Text>
-          <Text fontSize="md"> Daily Activities: </Text>
+          <Text fontSize="lg" ml="3"> Number of Daily Activities: {plan.dailyActivities}</Text>
+          <Text fontSize="lg" mt="5"> Daily Activities: </Text>
           {plan.activities.map((activity) => (
-            <Text key={activity}>
+            <Text fontSize="lg" ml="3" key={activity}>
               {"\u2B24"} {activity}
             </Text>
           ))}
-        </View>
+        </Box>
       )}
     </Box>
   );

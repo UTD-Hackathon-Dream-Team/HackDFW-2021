@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Image, Dimensions } from "react-native";
+import { Image, Dimensions } from "react-native";
 import {
   Box,
   Text,

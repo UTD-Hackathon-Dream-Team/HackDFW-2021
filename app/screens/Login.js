@@ -2,9 +2,7 @@ import * as React from "react";
 import { Image } from "react-native";
 import Onboarding from "./Onboarding";
 import Swiper from "react-native-swiper/src";
-import {
-  Box,  NativeBaseProvider, Center, Text, Button
-} from "native-base";
+import { Box, Text, Button, NativeBaseProvider } from "native-base";
 
 import book from "../assets/book.png";
 import apple from "../assets/apple.png";
@@ -14,7 +12,6 @@ var styles = {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f3f0e8"
   },
   desc: {
     textAlign: "center",
@@ -31,7 +28,7 @@ var styles = {
 
 function Login({ navigation }) {
   return (
-    <Box style={{flex:1}}> 
+    <Box bg={styles.bg} style={{flex:1}}>
       <Swiper showsButtons loop={false}>
         <Box style={styles.slides}>
             <Image source={book} style={{width: 180, height: 200}}></Image>
@@ -59,4 +56,16 @@ function Login({ navigation }) {
   );
 }
 
-export default Login;
+const config = {
+  dependencies: {
+    "linear-gradient": require("expo-linear-gradient").LinearGradient,
+  },
+};
+
+export default ( {navigation} ) => {
+  return (
+    <NativeBaseProvider config={config}>
+        <Login navigation={navigation} />
+    </NativeBaseProvider>
+  );
+};

@@ -1,6 +1,5 @@
 import * as React from "react";
-import { View } from "react-native";
-import { Box,  Text, Center, Heading, NativeBaseProvider, VStack } from "native-base";
+import { Box,  Text, Heading, NativeBaseProvider, VStack } from "native-base";
 import { getPlan } from "../util/firestore";
 
 var styles = {
