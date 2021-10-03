@@ -20,17 +20,17 @@ function ConfiguredPlan() {
   let [plan, setPlan] = React.useState({});
 
   React.useEffect(() => {
-    getPlans().then((plans) => {
-      // console.log(plans);
-      setPlans(plans);
-    });
+    async function fetchData() {
+      let response = await getPlans();
+      setPlans(response);
+    }
+    fetchData();
   }, []);
 
   async function getPlanDetails(planName) {
     getPlan(planName).then((plan) => {
       setPlanName(planName);
       setPlan(plan);
-      // console.log(plan);
     });
   }
 
